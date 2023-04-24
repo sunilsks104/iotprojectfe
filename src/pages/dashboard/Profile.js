@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
 import axios from 'axios';
+import { FloatingWhatsApp } from 'react-floating-whatsapp';
 
 const Profile = () => {
   const [rfidnumber, setRfidnumber] = useState('');
@@ -47,43 +48,65 @@ const Profile = () => {
   };
 
   return (
-    <Wrapper>
-      <form className="form" onSubmit={handleSubmit}>
-        <h3>Person Details</h3>
-        <div className="form-center">
-          <div>
-            <div className="form-row">
-              <label htmlFor={rfidnumber} className="form-label">
-                RFID Number
-              </label>
-              <input
-                id="rfidnumber"
-                type="text"
-                name="rfidnumber"
-                value={rfidnumber}
-                onChange={handleChange}
-                className="form-input"
-              />
+    <>
+      <Wrapper>
+        <form className="form" onSubmit={handleSubmit}>
+          <h3>Person Details</h3>
+          <div className="form-center">
+            <div>
+              <div className="form-row">
+                <label htmlFor={rfidnumber} className="form-label">
+                  RFID Number
+                </label>
+                <input
+                  id="rfidnumber"
+                  type="text"
+                  name="rfidnumber"
+                  value={rfidnumber}
+                  onChange={handleChange}
+                  className="form-input"
+                />
+              </div>
             </div>
-          </div>
 
-          <button type="submit" className="btn btn-block">
-            Get Details
-          </button>
+            <button type="submit" className="btn btn-block">
+              Get Details
+            </button>
+          </div>
+        </form>
+        <br />
+        <div className="form-center">
+          <div className="form-row">
+            <h3 className="form-label">Name</h3>
+            <h3 className="form-label">{name}</h3>
+          </div>
+          <div className="form-row">
+            <h3 className="form-label">Contact</h3>
+            <h3 className="form-label">{contact}</h3>
+          </div>
         </div>
-      </form>
-      <br />
-      <div className="form-center">
-        <div className="form-row">
-          <h3 className="form-label">Name</h3>
-          <h3 className="form-label">{name}</h3>
+        <br />
+        <div>
+          <a
+            href="https://web.whatsapp.com/"
+            target="_blank"
+            className="whatsapp"
+          >
+            Send Message in Whatsapp
+          </a>
         </div>
-        <div className="form-row">
-          <h3 className="form-label">Contact</h3>
-          <h3 className="form-label">{contact}</h3>
+        <div className="App">
+          <FloatingWhatsApp
+            phoneNumber="8431325199"
+            accountName="Ashraya Hospital"
+            allowEsc
+            allowClickAway
+            notification
+            notificationSound
+          />
         </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+    </>
   );
 };
 export default Profile;
